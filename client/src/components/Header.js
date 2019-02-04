@@ -2,6 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import Navbar from 'react-bootstrap/Navbar'
+import './Header.css'
+
 class Header extends React.Component {
 
     renderContent () {
@@ -10,23 +13,26 @@ class Header extends React.Component {
                 return
 
             case false:
-                return <li><a href = "/auth/google">Login With Google</a></li>
+                return <a href = "/auth/google">Login With Google</a>
 
             default:
-                return <li><a href = "/api/logout">Logout</a></li>
+                return <a href = "/api/logout">Logout</a>
         }
     }
     render() {
         console.log(this.props)
         return (
-            <nav>
-                <div className="nav-wrapper">
-                    <Link to = {this.props.auth ? '/surveys' : '/'} className="brand-logo">Emaily</Link>
-                    <ul id="nav-mobile" className="right hide-on-med-and-down">
+            <Navbar variant="dark" className = "header">
+                <Navbar.Brand>
+                    <Link to = {this.props.auth ? '/surveys' : '/'} className = "logo">Emaily</Link>
+                </Navbar.Brand>
+                <Navbar.Toggle />
+                <Navbar.Collapse className="justify-content-end">
+                    <Navbar.Text>
                         {this.renderContent()}
-                    </ul>
-                </div>
-            </nav>
+                    </Navbar.Text>
+                </Navbar.Collapse>
+            </Navbar>
         )
     }
 }

@@ -3,7 +3,11 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import Navbar from 'react-bootstrap/Navbar'
-import './Header.css'
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import Dropdown from 'react-bootstrap/Dropdown'
+import '../styles/Header.css'
+
+import Stripes from './Stripes'
 
 class Header extends React.Component {
 
@@ -16,7 +20,16 @@ class Header extends React.Component {
                 return <a href = "/auth/google">Login With Google</a>
 
             default:
-                return <a href = "/api/logout">Logout</a>
+                // return <a href = "/api/logout">Welcome {this.props.auth.name}</a>
+                let name = 'Welcome ' + this.props.auth.name
+                return (
+                    <div>
+                        <Stripes/>
+                        <DropdownButton id="dropdown-basic-button" title = {name} size = "sm" variant = "info">
+                            <Dropdown.Item href="/api/logout" style = {{color: 'black'}}>Logout</Dropdown.Item>
+                        </DropdownButton>
+                    </div>
+                )
         }
     }
     render() {

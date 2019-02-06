@@ -1,10 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
-import actions from '../actions'
+// import actions from '../actions'
+import { FETCH_USER } from '../actions/types'
 
 import Header from './Header'
 import Homepage from './Homepage'
+import axios from 'axios';
 
 const Surveys = () => <h2>Dashboard</h2>
 
@@ -25,5 +27,10 @@ class App extends React.Component {
   }
 }
 
-export default connect(null, actions)(App);
+export default connect(null, 
+  async (dispatch) => {
+    const res = await axios.get('/api/current_user')
+
+    dispatch({type: FETCH_USER, payload: res.data})
+  })(App)
  

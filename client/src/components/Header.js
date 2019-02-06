@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import Navbar from 'react-bootstrap/Navbar'
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import Dropdown from 'react-bootstrap/Dropdown'
+import Nav from 'react-bootstrap/Nav'
+import NavDropdown from 'react-bootstrap/NavDropdown'
 import '../styles/Header.css'
 
 import Stripes from './Stripes'
@@ -17,33 +17,34 @@ class Header extends React.Component {
                 return
 
             case false:
-                return <a href = "/auth/google">Login With Google</a>
+                return <a href = "/auth/google" className = "login">Login With Google</a>
 
             default:
-                // return <a href = "/api/logout">Welcome {this.props.auth.name}</a>
+               
                 let name = 'Welcome ' + this.props.auth.name
-                return (
-                    <div>
-                        <Stripes/>
-                        <DropdownButton id="dropdown-basic-button" title = {name} size = "sm" variant = "info">
-                            <Dropdown.Item href="/api/logout" style = {{color: 'black'}}>Logout</Dropdown.Item>
-                        </DropdownButton>
-                    </div>
+                return (                    
+                    <Nav>
+                        <Nav.Link><Stripes/></Nav.Link>
+                        <Nav.Link style = {{fontWeight: 'bold', color: 'wheat'}}>Credits: {this.props.auth.credits}</Nav.Link>
+                        <NavDropdown title={name} id="collasible-nav-dropdown">
+                            <NavDropdown.Item href="/api/logout">Logout</NavDropdown.Item>
+                        </NavDropdown>
+                    </Nav>                    
                 )
         }
     }
     render() {
         console.log(this.props)
         return (
-            <Navbar variant="dark" className = "header">
-                <Navbar.Brand>
-                    <Link to = {this.props.auth ? '/surveys' : '/'} className = "logo">Emaily</Link>
-                </Navbar.Brand>
-                <Navbar.Toggle />
-                <Navbar.Collapse className="justify-content-end">
-                    <Navbar.Text>
-                        {this.renderContent()}
-                    </Navbar.Text>
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                <Navbar.Brand><Link to = {this.props.auth ? '/surveys' : '/'} className = "logo">Emaily</Link></Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="mr-auto">
+                        
+                    </Nav>
+                    
+                    {this.renderContent()}
                 </Navbar.Collapse>
             </Navbar>
         )

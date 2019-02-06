@@ -1,5 +1,5 @@
 .logo {
-    color: white
+    color: ivory
 }
 
 .header {
@@ -8,4 +8,17 @@
 
 .dropdown {
     color: black
+}
+
+.credits {
+    color: wheat;
+    font-weight: bold;    
+}
+
+.login {
+    color: white
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: aliceblue
 }

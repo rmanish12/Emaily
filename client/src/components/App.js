@@ -1,27 +1,29 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
-// import actions from '../actions'
 import { FETCH_USER } from '../actions/types'
+import axios from 'axios';
 
 import Header from './Header'
 import Homepage from './Homepage'
-import axios from 'axios';
-
-const Surveys = () => <h2>Dashboard</h2>
+import Dashboard from './Dashboard'
+import SurveyNew from './survey/SurveyNew'
 
 class App extends React.Component {
 
   render() {
     return (
       <div>
+          <div>
           <BrowserRouter>
             <div>
               <Header />
               <Route exact path = "/" component = {Homepage}/>
-              <Route path = "/surveys" component = {Surveys}/>
+              <Route exact path = "/surveys" component = {Dashboard}/>
+              <Route exact path = "/survey/new" component = {SurveyNew}/>
             </div>
           </BrowserRouter>
+          </div>
       </div>
     )
   }

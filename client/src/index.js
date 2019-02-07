@@ -16,8 +16,6 @@ window.axios = axios
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk))
 
-
-
 ReactDOM.render( 
     <Provider store = {store}>
         <App />

@@ -7,7 +7,7 @@ class Mailer extends helper.Mail {
     constructor ({ subject, recipients }, content) {
         super()
 
-        this.sgApi = sendgrid(keys.sendGridKey)
+        this.sgApi = sendgrid('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')
         this.from_email = new helper.Email('no-reply@emaily.com')
         this.subject = subject
         this.body = new helper.Content('text/html', content)

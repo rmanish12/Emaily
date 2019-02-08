@@ -10,6 +10,7 @@ import { FETCH_USER } from '../../actions/types'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import Button from 'react-bootstrap/Button'
 
 const SurveyReview = (props) => {
 
@@ -21,6 +22,7 @@ const SurveyReview = (props) => {
             //     <div>{props.formValues[name]}</div>
             // </div>
             
+            
             <Form.Group as={Row} controlId="formPlaintextEmail">
                 <Form.Label column sm="2" style = {{fontWeight: "bold"}}>
                 {label}
@@ -28,16 +30,18 @@ const SurveyReview = (props) => {
                 <Col sm="10">
                 <Form.Control plaintext readOnly defaultValue = {val} />
                 </Col>
-            </Form.Group>
+            </Form.Group>            
         )
     })
 
     return(
         <div>
             <h5 style = {{textAlign: 'center'}}>Please review your inputs</h5>
-            {reviewFields}
-            <button onClick = {props.onCancel}>Back</button>
-            <button onClick = {() => props.submitSurvey(props.formValues, props.history)}>Send Survey</button>
+            <div style = {{textAlign: 'center'}}>{reviewFields}</div>
+            <div className = "text-center">
+                <Button variant="danger" onClick = {props.onCancel} style = {{margin: '0 10px'}}>Back</Button>
+                <Button variant="success" onClick = {() => props.submitSurvey(props.formValues, props.history)}>Send Survey</Button>
+            </div>
         </div>
     )
 }

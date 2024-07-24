@@ -1,5 +1,1 @@
-googleClientID: '915819825465-b4mve2s4iajukt32tjjpluotcug6djku.apps.googleusercontent.com',
-    googleClientSecret: 'uEcFysLVbgjX9X2WXpr64j7t',
-    mongoURI: 'mongodb://testuser:abcd1234@ds113375.mlab.com:13375/emaily-dev',
-    cookieKey: 'hdskdasnkxshdksnxskhdk',
-    sendGridKey: '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'
+
